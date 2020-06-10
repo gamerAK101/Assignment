@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fetch api</title>
+<h1>OUR TEAM</h1>
+<style>
+
+body{
+background-color: grey;
+text-align:center;
+}
+.al{
+margin-top: 20px;
+margin-left:100px;
+width :20%;
+height:75%;
+background-color:white;
+float:left;
+}
+
+.hel{
+text-align: center;
+}
+div:hover{
+background-color: lightblue;
+}
+</style>
+</head>
+<body>
+<div id="api"></div>
+</body>
+<script>
+fetch("http://localhost:3000/users")
+.then(res => {res.json()
+.then(data=>{console.log(data);
+.then(data => {
+const mydata = data.data
+.map(user => {
+return `
+<div class="al">
+<div>
+<p class="hel">${user.fname} ${user.lname}</p>
+</div>
+</div> `;
+})
+.join("");
+document.querySelector("#api").insertAdjacentHTML("afterbegin", mydata);
+})
+.catch(error => {
+console.log(error);
+});
+</script>
+</html>

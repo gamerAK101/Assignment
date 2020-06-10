@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="api"></div>
+    </body>
+<script>
+    fetch("http://localhost:3000/users")
+    .then(response => {
+if(!response) {
+throw Error("error");
+}
+return response.json();
+})
+.then(data => {
+const mydata = data.data
+.map(user => {
+return <div><p>${users.fname}</p><div>
+</script>
+</html>
